@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "cannon-server": "scripts/server.js"
+    "cannon-server": "scripts/server.js",
+    "build-routes-file": "scripts/build-routes-file.js"
   },
   "author": "",
   "license": "ISC",
