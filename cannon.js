@@ -1,8 +1,14 @@
 import React from 'react';
 
 class Page extends React.Component {
-  render() {
-    return <p>I AM A PAGE</p>;
+  componentWillMount() {
+    console.log('props', this.props);
+  }
+
+  linkTo(to, children) {
+    return (
+      <a href={this.props.router.makeHref(to)}>{children}</a>
+    );
   }
 }
 

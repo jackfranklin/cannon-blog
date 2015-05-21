@@ -6,6 +6,26 @@ import findAndLoadPages from './pages';
 
 const pwd = process.cwd();
 
+class CannonWrapper extends React.Component {
+  static childContextTypes = {
+    router: React.PropTypes.func.isRequired
+  }
+
+  getChildContext() {
+    return {
+      router: this.props.router
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        { this.props.children }
+      </div>
+    )
+  }
+}
+
 export default function render(req, res, next) {
   const doctype = '<!DOCTYPE html>';
 
@@ -19,10 +39,8 @@ export default function render(req, res, next) {
       location: req.url
     });
 
-
     router.run(function(Handler, state) {
-      console.log(Handler, state);
-      const output = React.renderToString(<Handler />);
+      const output = React.renderToString(<Handler router={router} />);
       res.send(doctype + output);
     });
   });
