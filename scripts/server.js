@@ -3,6 +3,18 @@
 var path = require('path');
 var nodemon = require('nodemon');
 
+var spawn = require('child_process').spawn;
+
+
+
+var webpackPath = path.join(__dirname, '..', 'node_modules', '.bin', 'webpack');
+
+var webpackProcess = spawn(webpackPath, ['--help']);
+
+webpackProcess.stderr.pipe(process.stdout);
+
+webpackProcess.stdout.pipe(process.stdout);
+
 nodemon({
   script: path.join(__dirname, '..', 'index'),
   ext: 'js json'

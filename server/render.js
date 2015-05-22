@@ -9,9 +9,7 @@ const pwd = process.cwd();
 export default function render(req, res, next) {
   const doctype = '<!DOCTYPE html>';
 
-  console.log('Request URL', req.url);
   findAndLoadPages(function(err, pages) {
-    console.log('FOUND PAGES', pages);
     const routes = cannonRouter.buildFromPages(pages);
 
     const router = Router.create({
