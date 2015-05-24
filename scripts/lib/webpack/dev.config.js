@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-  entry: path.join(__dirname, '..', '..', '..', './client/bootstrap.js'),
+  entry: path.join(__dirname, '..', '..', '..', './client/bootstrap.compiled.js'),
   output: {
     path: './public',
     filename: 'bundle.js'
