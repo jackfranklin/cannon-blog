@@ -19,7 +19,8 @@ export default function render(req, res, next) {
 
     router.run(function(Handler, state) {
       const output = React.renderToString(<Handler router={router} />);
-      res.send(doctype + output);
+      const script = '<script src="bundle.js"></script>';
+      res.send(doctype + output + script);
     });
   });
 }

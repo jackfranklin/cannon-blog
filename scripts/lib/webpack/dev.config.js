@@ -1,14 +1,18 @@
+var path = require('path');
+
 module.exports = {
-  entry: './bootstrap.js',
+  entry: path.join(__dirname, '..', '..', '..', './client/bootstrap.js'),
   output: {
-    path: __dirname,
+    path: './public',
     filename: 'bundle.js'
   },
-  loaders: [
-    {
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel'
-    }
-  ]
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel'
+      }
+    ]
+  }
 }

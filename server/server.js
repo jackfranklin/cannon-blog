@@ -5,7 +5,10 @@ import render from './render';
 
 var app = express();
 
+app.use(express.static('public'));
+
 app.use(render);
+
 const server = http.createServer(app);
 
 server.listen('8123');

@@ -8,11 +8,11 @@ var spawn = require('child_process').spawn;
 
 
 var webpackPath = path.join(__dirname, '..', 'node_modules', '.bin', 'webpack');
-
-var webpackProcess = spawn(webpackPath, ['--help']);
+var webpackProcess = spawn(webpackPath, [
+  '--config', path.join(__dirname, 'lib', 'webpack', 'dev.config.js')
+]);
 
 webpackProcess.stderr.pipe(process.stdout);
-
 webpackProcess.stdout.pipe(process.stdout);
 
 nodemon({
