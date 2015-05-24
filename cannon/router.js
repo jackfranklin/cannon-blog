@@ -9,7 +9,7 @@ export default {
       }
       return (
         <Route key={page.path}
-          name={page.path.replace('.js', '')}
+          name={page.name || page.path.replace('.js', '')}
           path={page.path.replace('.js', '')}
           handler={page.Component}>
         </Route>

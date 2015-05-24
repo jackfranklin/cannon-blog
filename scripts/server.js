@@ -46,7 +46,6 @@ getRoutes(function(err, routes) {
     file = file.replace('//PLACEHOLDER:routeArray', 'var routes = [' + _.map(routes, function(route) {
       return route.name;
     }).join(', ') + '];');
-    console.log(file);
     fs.writeFile(path.join(__dirname, '..', 'client', 'bootstrap.compiled.js'), file);
   });
 });
