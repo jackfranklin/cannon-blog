@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "babel": "^5.4.7",
-    "fs-extra": "^0.18.4",
     "glob": "^5.0.7",
     "handlebars": "^3.0.3",
     "lodash": "^3.9.1",
