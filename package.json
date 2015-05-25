@@ -6,10 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "bin": {
-    "cannon-server": "scripts/server.js",
-    "cannon-static": "scripts/build-static.js"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
