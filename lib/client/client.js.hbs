@@ -1,0 +1,39 @@
+import React from 'react';
+window.React = React;
+import Router, { Route } from 'react-router';
+import _ from 'lodash';
+
+var components = {};
+
+var routes = {{{ json }}};
+
+{{#each routes}}
+import {{ name }} from '{{ componentPath }}';
+components['{{ name }}'] = {{ name }};
+{{/each}}
+
+var routesWithComponent = _.map(routes, function(route) {
+  route.Component = components[route.name];
+  return route;
+});
+
+var router = Router.create({
+  location: Router.HistoryLocation,
+  routes: _.map(routesWithComponent, function(route) {
+    console.log('Defining route with path ' + route.path);
+    return (
+      <Route key={route.path}
+        name={route.name}
+        path={route.path}
+        handler={route.Component}>
+      </Route>
+    );
+  })
+});
+
+router.run(function(Handler, state) {
+  React.render(<Handler router={router} />, document.getElementById('root'), () => {
+    console.log('Route Change', state);
+  });
+});
+
