@@ -39,7 +39,7 @@ var router = Router.create({
 });
 
 router.run(function(Handler, state) {
-  React.render(<Handler router={router} />, document.getElementById('root'), () => {
+  React.render(<Handler router={router} routes={routes} />, document.getElementById('root'), () => {
     console.log('Route Change', state);
   });
 });
