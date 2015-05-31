@@ -17,6 +17,8 @@ var routesWithComponent = _.map(routes, function(route) {
   return route;
 });
 
+console.log('Got routes', routesWithComponent);
+
 var router = Router.create({
   location: Router.HistoryLocation,
   routes: _.map(routesWithComponent, function(route) {
