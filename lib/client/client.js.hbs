@@ -4,12 +4,19 @@ import Router, { Route } from 'react-router';
 import _ from 'lodash';
 
 var components = {};
+var layouts = {};
 
 var routes = {{{ json }}};
+var rawLayouts = {{{ layoutsJson }}};
 
 {{#each routes}}
 import {{ name }} from '{{ componentPath }}';
 components['{{ name }}'] = {{ name }};
+{{/each}}
+
+{{#each layouts}}
+import layout_{{ name }} from '{{ path }}';
+layouts['{{ name }}'] = layout_{{ name }};
 {{/each}}
 
 var routesWithComponent = _.map(routes, function(route) {
@@ -26,6 +33,7 @@ var router = Router.create({
     if (route.path.slice(-1) !== '/' && route.path.length > 1) {
       route.path = route.path + '/';
     }
+
     console.log('Defining route with path ' + route.path);
 
     return (
@@ -39,8 +47,20 @@ var router = Router.create({
 });
 
 router.run(function(Handler, state) {
-  React.render(<Handler router={router} routes={routes} />, document.getElementById('root'), () => {
-    console.log('Route Change', state);
-  });
+  let matchedRoute = _.find(routes, (route) => route.path === state.path);
+  let matchedLayout = matchedRoute.meta.layout || 'default';
+
+  let layout = _.find(rawLayouts, (layout) => layout.name === matchedLayout);
+
+  let LayoutComponent = layouts[layout.name];
+
+  React.render(
+    <LayoutComponent>
+      <Handler router={router} routes={routes} />
+    </LayoutComponent>
+    , document.getElementById('root'), () => {
+      console.log('Route Change', state);
+    }
+  );
 });
 

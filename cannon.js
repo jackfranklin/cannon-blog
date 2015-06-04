@@ -5,5 +5,6 @@ module.exports = {
   init: require('./lib/init'),
   render: require('./lib/render'),
   exposeRoutes: require('./lib/expose-routes'),
-  posts: require('./lib/posts')
+  posts: require('./lib/posts'),
+  layouts: require('./lib/layouts')
 }
