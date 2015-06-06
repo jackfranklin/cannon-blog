@@ -7,5 +7,6 @@ module.exports = {
   exposeRoutes: require('./lib/expose-routes'),
   posts: require('./lib/posts'),
   layouts: require('./lib/layouts'),
-  htmlDocument: require('./lib/html-document')
+  htmlDocument: require('./lib/html-document'),
+  data: require('./lib/data')
 }

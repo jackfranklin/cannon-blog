@@ -9,6 +9,8 @@ var layouts = {};
 var routes = {{{ json }}};
 var rawLayouts = {{{ layoutsJson }}};
 
+var data = {{{ data }}};
+
 {{#each routes}}
 import {{ name }} from '{{ componentPath }}';
 components['{{ name }}'] = {{ name }};
@@ -56,7 +58,7 @@ router.run(function(Handler, state) {
 
   React.render(
     <LayoutComponent>
-      <Handler router={router} routes={routes} />
+      <Handler router={router} routes={routes} data={data} />
     </LayoutComponent>
     , document.getElementById('root'), () => {
       console.log('Route Change', state);
