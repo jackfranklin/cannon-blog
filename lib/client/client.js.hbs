@@ -10,6 +10,7 @@ var routes = {{{ json }}};
 var rawLayouts = {{{ layoutsJson }}};
 
 var data = {{{ data }}};
+var config = {{{ config }}};
 
 {{#each routes}}
 import {{ name }} from '{{ componentPath }}';
@@ -56,12 +57,24 @@ router.run(function(Handler, state) {
 
   let LayoutComponent = layouts[layout.name];
 
+  let title = matchedRoute.meta.title || '';
+
   React.render(
     <LayoutComponent>
-      <Handler router={router} routes={routes} data={data} />
+      <Handler title={title} router={router} routes={routes} data={data} />
     </LayoutComponent>
     , document.getElementById('root'), () => {
       console.log('Route Change', state);
+      const pageTitle = (function() {
+        let routeTitle = matchedRoute.meta.title;
+        if (routeTitle) {
+          return `${routeTitle} : ${config.title}`;
+        } else {
+          return config.title;
+        }
+      })();
+
+      if (pageTitle) document.title = pageTitle;
     }
   );
 });
