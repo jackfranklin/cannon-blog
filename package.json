@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "cannon-build": "script/build-static.js"
+    "cannon-build": "script/build-static.js",
+    "cannon-init": "script/init.js"
   },
   "author": "Jack Franklin",
   "license": "ISC",
