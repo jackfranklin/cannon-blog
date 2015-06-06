@@ -6,5 +6,6 @@ module.exports = {
   render: require('./lib/render'),
   exposeRoutes: require('./lib/expose-routes'),
   posts: require('./lib/posts'),
-  layouts: require('./lib/layouts')
+  layouts: require('./lib/layouts'),
+  htmlDocument: require('./lib/html-document')
 }
