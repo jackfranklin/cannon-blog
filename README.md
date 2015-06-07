@@ -18,7 +18,7 @@ gocardless.com](https://gocardless.com/blog/how-we-built-the-new-gocardless.com/
 
 ## Getting Started
 
-_Cannon is currently very unstable and should not be considered stable, yet. As
+_Cannon is currently very unstable and should not be considered ready for use. As
 it gets to that stages more documentation will be written._
 
 Your first step is to create a new empty folder for your project and run:
@@ -27,6 +27,25 @@ Your first step is to create a new empty folder for your project and run:
 npm init
 npm install --save cannon-blog
 ```
+
+This will create a new project and install `cannon-blog`. Cannon provides a
+script for initialising a new project:
+
+```
+cannon-init
+```
+
+The init script will install other dependencies required (React, Express and
+others) and then create a small site for you containing an index page and one
+blog post.
+
+You can then fire up your server:
+
+```
+node index.js
+```
+
+And visit `http://localhost:8123` to see your new blog in all its glory.
 
 ## Available Middlewares
 
