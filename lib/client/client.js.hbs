@@ -59,9 +59,10 @@ router.run(function(Handler, state) {
 
   let title = matchedRoute.meta.title || '';
 
+  //TODO: very messy below!
   React.render(
-    <LayoutComponent>
-      <Handler title={title} router={router} routes={routes} data={data} />
+    <LayoutComponent route={matchedRoute} routes={routes} router={router}>
+      <Handler route={matchedRoute} title={title} router={router} routes={routes} data={data} />
     </LayoutComponent>
     , document.getElementById('root'), () => {
       console.log('Route Change', state);

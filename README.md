@@ -47,6 +47,9 @@ node index.js
 
 And visit `http://localhost:8123` to see your new blog in all its glory.
 
+## Adding pages and posts
+
+
 ## Available Middlewares
 
 _Coming Soon_
