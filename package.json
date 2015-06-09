@@ -1,6 +1,6 @@
 {
   "name": "cannon-blog",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A ReactJS Blogging engine",
   "main": "lib/cannon.js",
   "scripts": {
