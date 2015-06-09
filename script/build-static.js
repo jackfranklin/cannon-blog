@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-require('babel/register');
-
 var webpack = require('webpack');
 var config = require('../lib/client/webpack.prod.config');
 var dumpHtml = require('../lib/static/build-site');

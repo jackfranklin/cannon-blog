@@ -10,6 +10,8 @@ import generateClientBootstrap from './client/generate-bootstrap';
 import CannonHtmlDocument from './react/html-document';
 import turnRouteIntoReactRoute from './react-route';
 
+require('babel/register');
+
 function normaliseUrl(reqUrl) {
   if (reqUrl.length > 1) {
     if (reqUrl.slice(-1) !== '/') {

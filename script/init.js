@@ -5,9 +5,6 @@ var path = require('path');
 var fs = require('fs');
 var mkdirp = require('mkdirp');
 
-
-require('babel/register');
-
 function install(name, done) {
   var child = exec('npm install --save ' + name);
   console.log('Installing ' + name);
