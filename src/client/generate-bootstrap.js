@@ -36,6 +36,11 @@ module.exports = function({ routes, layouts, data, config }, cb) {
   } else {
     webpack(devConfig, function(err, stats) {
       console.log('Webpack Bundle Generated');
+      console.log('Errors?', stats.hasErrors());
+      console.log('Warnings?', stats.hasWarnings());
+      if (stats.hasErrors()) {
+        console.log(stats.toString());
+      }
       cb();
     });
   }
