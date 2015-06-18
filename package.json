@@ -1,6 +1,6 @@
 {
   "name": "cannon-blog",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A ReactJS Blogging engine",
   "main": "lib/cannon.js",
   "scripts": {
@@ -10,7 +10,8 @@
   },
   "bin": {
     "cannon-build": "script/build-static.js",
-    "cannon-init": "script/init.js"
+    "cannon-init": "script/init.js",
+    "cannon-dev": "script/dev-server"
   },
   "author": "Jack Franklin",
   "license": "ISC",
