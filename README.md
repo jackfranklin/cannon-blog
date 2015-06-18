@@ -39,10 +39,10 @@ The init script will install other dependencies required (React, Express and
 others) and then create a small site for you containing an index page and one
 blog post.
 
-You can then fire up your server:
+You can then fire up the development server:
 
 ```
-node index.js
+./node_modules/.bin/cannon-dev
 ```
 
 And visit `http://localhost:8123` to see your new blog in all its glory.

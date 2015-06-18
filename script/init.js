@@ -40,7 +40,8 @@ async.each([
   'babel-loader@5.1.3',
   'react@0.13.3',
   'react-router@0.13.3',
-  'nodemon@1.3.7'
+  'nodemon@1.3.7',
+  'webpack-dev-server@1.9.0'
 ], install, function(err) {
   console.log('Dependencies installed');
   console.log('Creating index.js');
