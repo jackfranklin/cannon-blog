@@ -19,6 +19,8 @@ module.exports = function({ routes, layouts, data, config }, cb) {
     return route;
   });
 
+  console.log('got routes', routes);
+
   const compiledClient = Handlebars.compile(source)({
     routes,
     layouts,

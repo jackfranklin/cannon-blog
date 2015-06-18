@@ -15,6 +15,7 @@ module.exports = function(files, options, res, next) {
   }
 
   var routes = _.map(files, function(file) {
+    console.log('got cwd', process.cwd());
     var componentPath = path.join(process.cwd(), file);
     var name = file.replace('.js', '');
 
