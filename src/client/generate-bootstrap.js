@@ -8,6 +8,10 @@ import devConfig from './webpack.dev.config';
 import prodConfig from './webpack.prod.config';
 
 module.exports = function({ routes, layouts, data, config }, cb) {
+  console.log('Not generating client side bundle. Use webpack-dev-server!');
+  cb();
+  return;
+
   console.log('Generating client side bundle');
 
   const source = fs.readFileSync(path.join(__dirname, 'client.js.hbs'), { encoding: 'utf8' });

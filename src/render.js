@@ -87,7 +87,7 @@ export default function(options) {
             markup={output}
             router={router}
             title={pageTitle}
-            script='/js/bundle.js'
+            script='http://localhost:8080/bundle.js'
           />
         );
 
