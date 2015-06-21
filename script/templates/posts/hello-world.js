@@ -1,5 +1,5 @@
 import React from 'react';
-import CannonComponent from 'cannon-blog/component';
+import CannonComponent from 'cannon-blog/lib/component';
 
 export const meta = {
   date: '2015-05-31',

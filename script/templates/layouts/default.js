@@ -1,4 +1,4 @@
-import CannonLayout from 'cannon-blog/layout';
+import CannonLayout from 'cannon-blog/lib/layout';
 import React from 'react';
 
 export default class Default extends CannonLayout {
