@@ -2,7 +2,7 @@
 
 A server and client side ReactJS powered blogging engine.
 
-__Please note Cannon is not ready yet!__ By all means try and use it but you'll definitely run into lots of problems.
+__Please note Cannon is not ready yet!__ By all means try and use it but you'll definitely run into lots of problems. I'm keeping a rough plan of work in [the Trello board](https://trello.com/b/WEvG2GLt/cannon).
 
 ## How
 
