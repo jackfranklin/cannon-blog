@@ -2,6 +2,8 @@
 
 A server and client side ReactJS powered blogging engine.
 
+__Please note Cannon is not ready yet!__ By all means try and use it but you'll definitely run into lots of problems.
+
 ## How
 
 Cannon is run as a series of ExpressJS middlewares that you run on a server
