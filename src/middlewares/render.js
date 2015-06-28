@@ -5,10 +5,10 @@ import url from 'url';
 import React from 'react';
 import Router, { Route } from 'react-router';
 
-import generateClientBootstrap from './client/generate-bootstrap';
+import generateClientBootstrap from '../client/generate-bootstrap';
 
-import CannonHtmlDocument from './react/html-document';
-import turnRouteIntoReactRoute from './react-route';
+import CannonHtmlDocument from '../react/html-document';
+import turnRouteIntoReactRoute from '../react-route';
 
 require('babel/register');
 

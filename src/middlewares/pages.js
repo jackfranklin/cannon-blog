@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import addFilesToRoute from './add-files-to-route';
+import addFilesToRoute from '../add-files-to-route';
 import path from 'path';
 import glob from 'glob';
 
