@@ -51,10 +51,12 @@ export default function(options = {}) {
 
     router.run(function(Handler, state) {
       let matchedRoute = findRouteFromPath(res.locals.cannon.routes, state.path);
+      //TODO: deal with matchedRoute being undefined
       let matchedLayout = matchedRoute.meta.layout || 'default';
 
       let layout = _.find(res.locals.cannon.layouts, (layout) => layout.name === matchedLayout);
 
+      //TODO: what if there is not a found layout?
       let LayoutComponent = require(layout.path);
 
       // TODO: the below can definitely be tidied up!
