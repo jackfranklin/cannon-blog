@@ -5,7 +5,7 @@ import glob from 'glob';
 
 const cwd = process.cwd();
 
-export default function(options) {
+export default function(options = {}) {
   const directory = options.directory || 'pages';
   const pageGlob = options.glob || '*.js';
 
