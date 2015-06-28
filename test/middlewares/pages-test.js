@@ -3,7 +3,7 @@ import expect from 'expect.js';
 
 import { Double } from 'doubler';
 
-const pagesStub = [];
+let pagesStub = [];
 
 let {glob} = new Double({
   glob: (glob, opts, cb) => cb(null, pagesStub),
@@ -17,15 +17,31 @@ let pages = proxyquire('../../src/middlewares/pages', {
 });
 
 describe('Cannon pages middleware', () => {
+  let glob;
+  let addFilesToRoute;
+  let pages;
+  let pagesStub;
+
   beforeEach(() => {
-    glob.reset();
-    addFilesToRoute.reset();
+    glob = new Double({
+      glob: (glob, opts, cb) => cb(null, pagesStub),
+    }).glob;
+
+    addFilesToRoute = new Double({ addFilesToRoute: () => {} }).addFilesToRoute;
+
+    pages = proxyquire('../../src/middlewares/pages', {
+      'glob': glob,
+      '../add-files-to-route': addFilesToRoute
+    });
   });
+
   const req = {};
   const res = {};
   const next = () => {};
 
   describe('options', () => {
+    beforeEach(() => pagesStub = []);
+
     it('sets the default directory and glob if they are not defined', () => {
       let middleware = pages();
       middleware(req, res, next);
@@ -50,6 +66,23 @@ describe('Cannon pages middleware', () => {
       expect(searchGlob).to.eql('**/*.js');
       expect(opts).to.eql({ cwd: 'foo' });
       expect(fn).to.be.a(Function);
+    });
+  });
+
+  describe('adding the pages to route', () => {
+    beforeEach(() => pagesStub = ['index.js', 'about.js']);
+
+    it('finds the matching files and calls addFilesToRoute', () => {
+      let middleware = pages();
+
+      middleware(req, res, next);
+
+      expect(glob.called).to.eql(true);
+      expect(addFilesToRoute.called).to.eql(true);
+
+      let [foundPages, opts,] = addFilesToRoute.args[0];
+      expect(foundPages).to.eql(['pages/index.js', 'pages/about.js']);
+      expect(opts).to.eql({ type: 'pages' });
     });
   });
 });
