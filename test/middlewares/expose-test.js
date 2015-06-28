@@ -1,7 +1,7 @@
 import expect from 'expect.js';
 import { Double } from 'doubler';
 
-import expose from '../src/expose';
+import expose from '../../src/middlewares/expose';
 
 describe('Cannon Expose', () => {
   const next = () => {};

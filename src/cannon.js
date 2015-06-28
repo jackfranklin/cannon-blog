@@ -1,10 +1,10 @@
 module.exports = {
-  pages: require('./pages'),
-  init: require('./init'),
-  render: require('./render'),
-  expose: require('./expose'),
-  posts: require('./posts'),
-  layouts: require('./layouts'),
-  htmlDocument: require('./html-document'),
-  data: require('./data')
+  pages: require('./middlewares/pages'),
+  init: require('./middlewares/init'),
+  render: require('./middlewares/render'),
+  expose: require('./middlewares/expose'),
+  posts: require('./middlewares/posts'),
+  layouts: require('./middlewares/layouts'),
+  htmlDocument: require('./middlewares/html-document'),
+  data: require('./middlewares/data')
 }

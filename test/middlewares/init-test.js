@@ -1,7 +1,7 @@
 import expect from 'expect.js';
 import { Double } from 'doubler';
 
-import init from '../src/init';
+import init from '../../src/middlewares/init';
 
 describe('Cannon init', () => {
   const next = () => {};

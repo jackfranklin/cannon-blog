@@ -1,7 +1,7 @@
 import expect from 'expect.js';
 import path from 'path';
 
-import layouts from '../src/layouts';
+import layouts from '../../src/middlewares/layouts';
 
 describe('Cannon layouts', () => {
   const next = () => {};

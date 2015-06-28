@@ -7,7 +7,7 @@
     "prepublish": "npm run compile",
     "compile": "./node_modules/.bin/babel -d lib src/ && npm run copy-template",
     "copy-template": "cp src/client/client.js.hbs lib/client/client.js.hbs",
-    "test": "mocha --compilers js:babel/register test"
+    "test": "mocha --compilers js:babel/register test/**"
   },
   "bin": {
     "cannon-build": "script/build-static.js",
