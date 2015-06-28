@@ -3,19 +3,6 @@ import expect from 'expect.js';
 
 import { Double } from 'doubler';
 
-let pagesStub = [];
-
-let {glob} = new Double({
-  glob: (glob, opts, cb) => cb(null, pagesStub),
-});
-
-let {addFilesToRoute} = new Double({ addFilesToRoute: () => {} });
-
-let pages = proxyquire('../../src/middlewares/pages', {
-  'glob': glob,
-  '../add-files-to-route': addFilesToRoute
-});
-
 describe('Cannon pages middleware', () => {
   let glob;
   let addFilesToRoute;

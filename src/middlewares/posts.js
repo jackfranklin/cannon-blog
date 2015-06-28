@@ -2,7 +2,7 @@ import glob from 'glob';
 import path from 'path';
 import addFilesToRoute from '../add-files-to-route';
 
-export default function(options) {
+export default function(options = {}) {
   const directory = options.directory || 'posts';
   const postGlob = options.glob || '*.js';
   const url = options.url || '{{date}}-{{title}}';
