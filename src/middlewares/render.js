@@ -8,7 +8,7 @@ import Router, { Route } from 'react-router';
 import generateClientBootstrap from '../client/generate-bootstrap';
 
 import CannonHtmlDocument from '../react/html-document';
-import turnRouteIntoReactRoute from '../react-route';
+import turnRouteIntoReactRoute from '../cannon-route-to-react';
 
 require('babel/register');
 
