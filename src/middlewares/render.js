@@ -26,7 +26,7 @@ function findRouteFromPath(routes, routePath) {
   return _.find(routes, (route) => route.path === routePath);
 }
 
-export default function(options) {
+export default function(options = {}) {
 
   return function(req, res, next) {
     const isHtml = req.headers.accept && req.accepts('html');
@@ -38,63 +38,61 @@ export default function(options) {
       layouts: res.locals.cannon.layouts,
       data: res.locals.cannon.data,
       config: res.locals.cannon.config
-    }, function() {
-      let config = res.locals.cannon.config;
-
-      const routes = _.map(res.locals.cannon.routes, turnRouteIntoReactRoute);
-
-      const router = Router.create({
-        routes,
-        location: normaliseUrl(req.url)
-      });
-
-      router.run(function(Handler, state) {
-        let matchedRoute = findRouteFromPath(res.locals.cannon.routes, state.path);
-        let matchedLayout = matchedRoute.meta.layout || 'default';
-
-        let layout = _.find(res.locals.cannon.layouts, (layout) => layout.name === matchedLayout);
-
-        let LayoutComponent = require(layout.path);
-
-        // TODO: the below can definitely be tidied up!
-        const output = React.renderToString(
-          <LayoutComponent router={router} route={matchedRoute} routes={res.locals.cannon.routes}>
-            <Handler route={matchedRoute} routes={res.locals.cannon.routes} data={res.locals.cannon.data} />
-          </LayoutComponent>
-        );
-
-        const HtmlDocument = (function() {
-          if (res.locals.cannon.htmlDocument) {
-            return require(res.locals.cannon.htmlDocument);
-          } else {
-            return CannonHtmlDocument;
-          }
-        })();
-
-        const pageTitle = (function() {
-          let routeTitle = matchedRoute.meta.title;
-          if (routeTitle) {
-            return `${routeTitle} : ${config.title}`;
-          } else {
-            return config.title;
-          }
-        })();
-
-
-
-        const html = React.renderToStaticMarkup(
-          <HtmlDocument
-            markup={output}
-            router={router}
-            title={pageTitle}
-            script='http://localhost:8080/bundle.js'
-          />
-        );
-
-        const doctype = '<!DOCTYPE html>';
-
-        res.send(doctype + html);
-      });
     });
-  }
+
+    let config = res.locals.cannon.config;
+
+    const routes = _.map(res.locals.cannon.routes, turnRouteIntoReactRoute);
+
+    const router = Router.create({
+      routes,
+      location: normaliseUrl(req.url)
+    });
+
+    router.run(function(Handler, state) {
+      let matchedRoute = findRouteFromPath(res.locals.cannon.routes, state.path);
+      let matchedLayout = matchedRoute.meta.layout || 'default';
+
+      let layout = _.find(res.locals.cannon.layouts, (layout) => layout.name === matchedLayout);
+
+      let LayoutComponent = require(layout.path);
+
+      // TODO: the below can definitely be tidied up!
+      const output = React.renderToString(
+        <LayoutComponent router={router} route={matchedRoute} routes={res.locals.cannon.routes}>
+        <Handler route={matchedRoute} routes={res.locals.cannon.routes} data={res.locals.cannon.data} />
+        </LayoutComponent>
+      );
+
+      const HtmlDocument = (function() {
+        if (res.locals.cannon.htmlDocument) {
+          return require(res.locals.cannon.htmlDocument);
+        } else {
+          return CannonHtmlDocument;
+        }
+      })();
+
+      const pageTitle = (function() {
+        let routeTitle = matchedRoute.meta.title;
+        if (routeTitle) {
+          return `${routeTitle} : ${config.title}`;
+        } else {
+          return config.title;
+        }
+      })();
+
+      const html = React.renderToStaticMarkup(
+        <HtmlDocument
+        markup={output}
+        router={router}
+        title={pageTitle}
+        script='http://localhost:8080/bundle.js'
+        />
+      );
+
+      const doctype = '<!DOCTYPE html>';
+
+      res.send(doctype + html);
+    });
+  };
 };

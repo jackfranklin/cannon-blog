@@ -7,23 +7,17 @@ import webpack from 'webpack';
 import devConfig from './webpack.dev.config';
 import prodConfig from './webpack.prod.config';
 
-module.exports = function({ routes, layouts, data, config }, cb) {
-  console.log('Not generating client side bundle. Use webpack-dev-server!');
-  cb();
-  return;
-
-  console.log('Generating client side bundle');
+module.exports = function({ routes, layouts, data, config }) {
+  console.log('Generating clientside entry point');
 
   const source = fs.readFileSync(path.join(__dirname, 'client.js.hbs'), { encoding: 'utf8' });
-  routes = _.map(routes, function(route) {
 
-    // as they get imported, name cannot contain /
+  routes = _.map(routes, function(route) {
+    // as they get imported, name cannot contain / or -
     route.name = route.name.replace('/', '_');
     route.name = route.name.replace('-', '_');
     return route;
   });
-
-  console.log('got routes', routes);
 
   const compiledClient = Handlebars.compile(source)({
     routes,
@@ -36,18 +30,5 @@ module.exports = function({ routes, layouts, data, config }, cb) {
 
   fs.writeFileSync(path.join(__dirname, 'out', 'client.js'), compiledClient);
 
-  if (process.env.NODE_ENV === 'production') {
-    console.log('Prod server: skipping bundle generation');
-    cb();
-  } else {
-    webpack(devConfig, function(err, stats) {
-      console.log('Webpack Bundle Generated');
-      console.log('Errors?', stats.hasErrors());
-      console.log('Warnings?', stats.hasWarnings());
-      if (stats.hasErrors()) {
-        console.log(stats.toString());
-      }
-      cb();
-    });
-  }
+  console.log('Wrote client.js to', path.join(__dirname, 'out', 'client.js'));
 }
