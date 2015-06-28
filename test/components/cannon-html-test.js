@@ -33,7 +33,7 @@ describe('Cannon HTML', () => {
     expect(markup.getDOMNode().innerHTML).to.eql('<p class="test">Hello World</p>');
   });
 
-  it.only('renders the script', function() {
+  it('renders the script', function() {
     const markup = TestUtils.findRenderedDOMComponentWithTag(rendered, 'script');
     expect(markup.getDOMNode().src).to.eql('foo.js');
   });
