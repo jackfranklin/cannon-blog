@@ -49,7 +49,11 @@ You can then fire up the development server:
 
 And visit `http://localhost:8123` to see your new blog in all its glory.
 
+Note that the very first time you run `cannon-dev`, you will see an error. Currently you have to hit the site first for the bundle to be correctly generated. Then you can restart the server and everything should work. This is on the list of TODOs!
+
 ## Adding pages and posts
+
+_Coming Soon_
 
 
 ## Available Middlewares
