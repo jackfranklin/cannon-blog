@@ -4,8 +4,7 @@ var moment = require('moment');
 var slug = require('slug');
 var Handlebars = require('handlebars');
 
-
-module.exports = function(files, options, res, next) {
+export default function(files, options, res, next) {
   //options.type: 'page' or 'post'
 
   if (!(res.locals.cannon && res.locals.cannon.routes)) {
@@ -15,7 +14,6 @@ module.exports = function(files, options, res, next) {
   }
 
   var routes = _.map(files, function(file) {
-    console.log('got cwd', process.cwd());
     var componentPath = path.join(process.cwd(), file);
     var name = file.replace('.js', '');
 
@@ -29,6 +27,8 @@ module.exports = function(files, options, res, next) {
           title: slug(titlePart, { lower: true })
         });
       } else if (options.type === 'pages') {
+        //TODO: what if the directory pages are in isn't called "pages" ?
+        // this needs to replace based on what the dir is called
         return name.replace('pages', '');
       }
     })();

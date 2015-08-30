@@ -1,11 +1,11 @@
 import _ from 'lodash';
-import addFilesToRoute from './add-files-to-route';
+import addFilesToRoute from '../add-files-to-route';
 import path from 'path';
 import glob from 'glob';
 
 const cwd = process.cwd();
 
-export default function(options) {
+export default function(options = {}) {
   const directory = options.directory || 'pages';
   const pageGlob = options.glob || '*.js';
 

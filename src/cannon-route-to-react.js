@@ -11,9 +11,6 @@ export default function turnRouteIntoReactRoute(route) {
     route.path = route.path + '/';
   }
 
-
-  console.log('Server route', route.path);
-
   return (
     <Route key={route.path}
       name={route.name}
