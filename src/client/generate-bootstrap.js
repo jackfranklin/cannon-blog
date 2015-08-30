@@ -28,7 +28,7 @@ module.exports = function({ routes, layouts, data, config }) {
     layoutsJson: JSON.stringify(layouts, null, 2)
   });
 
-  fs.writeFileSync(path.join(__dirname, 'out', 'client.js'), compiledClient);
+  fs.writeFileSync(path.join(process.cwd(), 'cannon-out', 'client.js'), compiledClient);
 
-  console.log('Wrote client.js to', path.join(__dirname, 'out', 'client.js'));
+  console.log('Wrote client.js to', path.join(process.cwd(), 'cannon-out', 'client.js'));
 }

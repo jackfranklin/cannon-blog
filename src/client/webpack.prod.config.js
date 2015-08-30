@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  entry: path.join(__dirname, 'out', 'client.js'),
+  entry: path.join(process.cwd(), 'cannon-out', 'client.js'),
   output: {
     path: './public/prod',
     filename: 'bundle.js'
