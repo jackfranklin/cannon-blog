@@ -62,7 +62,7 @@ export default function(options = {}) {
       // TODO: the below can definitely be tidied up!
       const output = React.renderToString(
         <LayoutComponent router={router} route={matchedRoute} routes={res.locals.cannon.routes}>
-        <Handler route={matchedRoute} routes={res.locals.cannon.routes} data={res.locals.cannon.data} />
+          <Handler route={matchedRoute} routes={res.locals.cannon.routes} data={res.locals.cannon.data} />
         </LayoutComponent>
       );
 

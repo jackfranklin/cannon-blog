@@ -14,8 +14,11 @@ export default class CannonComponent extends React.Component {
     });
   }
 
+  static contextTypes = {
+    router: React.PropTypes.func
+  }
+
   makeLink(props, child) {
     return (<Link {...props}>{child}</Link>);
   }
-
 }
