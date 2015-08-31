@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -e errexit
+
+./node_modules/.bin/webpack-dev-server --config node_modules/cannon-blog/lib/client/webpack.dev.config.js

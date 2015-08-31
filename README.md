@@ -47,6 +47,12 @@ You can then fire up the development server:
 ./node_modules/.bin/cannon-dev
 ```
 
+And in another tab, the webpack server which will generate and serve the clientside bundle.
+
+```
+./node_modules/.bin/cannon-webpack
+```
+
 And visit `http://localhost:8123` to see your new blog in all its glory.
 
 Note that the very first time you run `cannon-dev`, you will see an error. Currently you have to hit the site first for the bundle to be correctly generated. Then you can restart the server and everything should work. This is on the list of TODOs!

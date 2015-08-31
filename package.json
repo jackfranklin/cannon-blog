@@ -12,7 +12,8 @@
   "bin": {
     "cannon-build": "script/build-static.js",
     "cannon-init": "script/init.js",
-    "cannon-dev": "script/dev-server"
+    "cannon-dev": "script/dev-server",
+    "cannon-webpack": "script/webpack-server"
   },
   "author": "Jack Franklin",
   "license": "ISC",

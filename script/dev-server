@@ -2,6 +2,4 @@
 
 set -e errexit
 
-node index.js &
-
-./node_modules/.bin/webpack-dev-server --config node_modules/cannon-blog/lib/client/webpack.dev.config.js
+./node_modules/.bin/nodemon index.js

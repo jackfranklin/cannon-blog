@@ -50,6 +50,7 @@ async.each([
   writeTemplate('layouts/default.js');
   writeTemplate('pages/index.js');
   writeTemplate('posts/hello-world.js');
+  writeTemplate('public/favicon.ico');
 
   createDirectory('public/js');
   createDirectory('cannon-out');
